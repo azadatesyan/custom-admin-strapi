@@ -11,7 +11,7 @@ const layout = {
           defaultMessage: 'Go to the Content type Builder',
         },
         type: 'REDIRECT',
-        target: '/plugins/content-type-builder',
+        target: '/content-manager',
       },
       trackingEvent: 'didClickGuidedTourHomepageContentTypeBuilder',
     },

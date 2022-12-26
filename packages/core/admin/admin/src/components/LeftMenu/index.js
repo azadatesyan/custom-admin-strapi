@@ -22,6 +22,8 @@ import Exit from '@strapi/icons/Exit';
 import { auth, usePersistentState, useAppInfos, useTracking } from '@strapi/helper-plugin';
 import useConfigurations from '../../hooks/useConfigurations';
 
+import isDevEnvironment from '../../utils/isDevEnvironment';
+
 const LinkUserWrapper = styled(Box)`
   width: ${150 / 16}rem;
   position: absolute;
@@ -51,6 +53,12 @@ const LinkUser = styled(RouterNavLink)`
 `;
 
 const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }) => {
+  if (!isDevEnvironment(window.location.hostname)) {
+    const [_contentTypeBuilder, mediaGallery] = pluginsSectionLinks;
+    pluginsSectionLinks = [mediaGallery];
+    generalSectionLinks = [];
+  }
+
   const buttonRef = useRef();
   const [userLinksVisible, setUserLinksVisible] = useState(false);
   const {
@@ -88,20 +96,17 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }) => {
     trackUsage('willNavigate', { from: pathname, to: destination });
   };
 
-  const menuTitle = formatMessage({
-    id: 'app.components.LeftMenu.navbrand.title',
-    defaultMessage: 'Strapi Dashboard',
-  });
+  // const menuTitle = formatMessage({
+  //   id: 'app.components.LeftMenu.navbrand.title',
+  //   defaultMessage: 'Strapi Dashboard',
+  // });
 
   return (
     <MainNav condensed={condensed}>
       <NavBrand
         as={RouterNavLink}
-        workplace={formatMessage({
-          id: 'app.components.LeftMenu.navbrand.workplace',
-          defaultMessage: 'Workplace',
-        })}
-        title={menuTitle}
+        workplace='Administrateur'
+        title='La Rétropolitaine'
         icon={
           <img
             src={menu.custom || menu.default}

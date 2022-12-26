@@ -10,13 +10,13 @@ import { useTracking, LoadingIndicatorPage, useStrapiApp } from '@strapi/helper-
 import { useDispatch, useSelector } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import GuidedTourModal from '../../components/GuidedTour/Modal';
+// import GuidedTourModal from '../../components/GuidedTour/Modal';
 import LeftMenu from '../../components/LeftMenu';
 import AppLayout from '../../layouts/AppLayout';
 import { useMenu } from '../../hooks';
 import { createRoute } from '../../utils';
 import { SET_APP_RUNTIME_STATUS } from '../App/constants';
-import Onboarding from './Onboarding';
+// import Onboarding from './Onboarding';
 
 const CM = lazy(() =>
   import(/* webpackChunkName: "content-manager" */ '../../content-manager/pages/App')
@@ -105,8 +105,8 @@ const Admin = () => {
             <Route path="" component={NotFoundPage} />
           </Switch>
         </Suspense>
-        <GuidedTourModal />
-        <Onboarding />
+        {/* <GuidedTourModal /> */}
+        {/* <Onboarding /> */}
       </AppLayout>
     </DndProvider>
   );

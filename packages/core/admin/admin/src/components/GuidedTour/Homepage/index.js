@@ -2,10 +2,10 @@ import React from 'react';
 import { useGuidedTour, useTracking, LinkButton } from '@strapi/helper-plugin';
 import { useIntl } from 'react-intl';
 import { Stack } from '@strapi/design-system/Stack';
-import { Flex } from '@strapi/design-system/Flex';
+// import { Flex } from '@strapi/design-system/Flex';
 import { Box } from '@strapi/design-system/Box';
 import { Typography } from '@strapi/design-system/Typography';
-import { Button } from '@strapi/design-system/Button';
+// import { Button } from '@strapi/design-system/Button';
 import ArrowRight from '@strapi/icons/ArrowRight';
 import StepperHomepage from './components/Stepper';
 import layout from '../layout';
@@ -34,12 +34,12 @@ const GuidedTourHomepage = () => {
     ...section,
   }));
 
-  const activeSection = enrichedSections.find((section) => !section.isDone)?.key;
+  const activeSection = enrichedSections[0].key;
 
-  const handleSkip = () => {
-    setSkipped(true);
-    trackUsage('didSkipGuidedtour');
-  };
+  // const handleSkip = () => {
+  //   setSkipped(true);
+  //   trackUsage('didSkipGuidedtour');
+  // };
 
   return (
     <Box
@@ -60,11 +60,11 @@ const GuidedTourHomepage = () => {
         </Typography>
         <StepperHomepage sections={sections} currentSectionKey={activeSection} />
       </Stack>
-      <Flex justifyContent="flex-end">
+      {/* <Flex justifyContent="flex-end">
         <Button variant="tertiary" onClick={handleSkip}>
           {formatMessage({ id: 'app.components.GuidedTour.skip', defaultMessage: 'Skip the tour' })}
         </Button>
-      </Flex>
+      </Flex> */}
     </Box>
   );
 };

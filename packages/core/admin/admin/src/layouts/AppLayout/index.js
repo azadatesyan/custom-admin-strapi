@@ -14,7 +14,7 @@ const AppLayout = ({ children, sideNav }) => {
   const { formatMessage } = useIntl();
 
   return (
-    <Box background="neutral100">
+    <Box background="#FCF8E8">
       <SkipToContent>
         {formatMessage({ id: 'skipToContent', defaultMessage: 'Skip to content' })}
       </SkipToContent>

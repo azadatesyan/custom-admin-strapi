@@ -5,39 +5,39 @@
 
 import React, { memo, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { useHistory } from 'react-router-dom';
-import { LoadingIndicatorPage, useGuidedTour } from '@strapi/helper-plugin';
+import { LoadingIndicatorPage } from '@strapi/helper-plugin';
 import { Layout } from '@strapi/design-system/Layout';
 import { Main } from '@strapi/design-system/Main';
 import { Box } from '@strapi/design-system/Box';
 import { Grid, GridItem } from '@strapi/design-system/Grid';
-import cornerOrnamentPath from './assets/corner-ornament.svg';
+// import cornerOrnamentPath from './assets/corner-ornament.svg';
 import { useModels } from '../../hooks';
-import isGuidedTourCompleted from '../../components/GuidedTour/utils/isGuidedTourCompleted';
+// import isGuidedTourCompleted from '../../components/GuidedTour/utils/isGuidedTourCompleted';
 import GuidedTourHomepage from '../../components/GuidedTour/Homepage';
-import SocialLinks from './SocialLinks';
+// import SocialLinks from './SocialLinks';
 import HomeHeader from './HomeHeader';
-import ContentBlocks from './ContentBlocks';
+// import ContentBlocks from './ContentBlocks';
 
-const LogoContainer = styled(Box)`
-  position: absolute;
-  top: 0;
-  right: 0;
+// const LogoContainer = styled(Box)`
+//   position: absolute;
+//   top: 0;
+//   right: 0;
 
-  img {
-    width: ${150 / 16}rem;
-  }
-`;
+//   img {
+//     width: ${150 / 16}rem;
+//   }
+// `;
 
 const HomePage = () => {
   // Temporary until we develop the menu API
   const { collectionTypes, singleTypes, isLoading: isLoadingForModels } = useModels();
-  const { guidedTourState, isGuidedTourVisible, isSkipped } = useGuidedTour();
+  // const { guidedTourState, isGuidedTourVisible, isSkipped } = useGuidedTour();
 
-  const showGuidedTour =
-    !isGuidedTourCompleted(guidedTourState) && isGuidedTourVisible && !isSkipped;
+  // const showGuidedTour =
+  //   !isGuidedTourCompleted(guidedTourState) && isGuidedTourVisible && !isSkipped;
 
   const { push } = useHistory();
   const handleClick = (e) => {
@@ -64,9 +64,9 @@ const HomePage = () => {
         {(title) => <Helmet title={title[0]} />}
       </FormattedMessage>
       <Main>
-        <LogoContainer>
+        {/* <LogoContainer>
           <img alt="" aria-hidden src={cornerOrnamentPath} />
-        </LogoContainer>
+        </LogoContainer> */}
         <Box padding={10}>
           <Grid>
             <GridItem col={8} s={12}>
@@ -77,12 +77,11 @@ const HomePage = () => {
             </GridItem>
           </Grid>
           <Grid gap={6}>
+            <GridItem col={2} s={12}/>
             <GridItem col={8} s={12}>
-              {showGuidedTour ? <GuidedTourHomepage /> : <ContentBlocks />}
+              <GuidedTourHomepage />
             </GridItem>
-            <GridItem col={4} s={12}>
-              <SocialLinks />
-            </GridItem>
+            <GridItem col={2} s={12}/>
           </Grid>
         </Box>
       </Main>
